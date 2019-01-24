@@ -73,7 +73,7 @@ public class CiteIndex {
 //				System.out.println("-----------------------------------------");
 //			}
 //		}
-		 CiteIndex cindex = new CiteIndex(new File("xmls/t24.xml"));
+		 CiteIndex cindex = new CiteIndex(new File("D:\\pdf\\xmls\\t8.xml"));
 		 System.out.println(cindex.getIndexstrs());
 		 System.out.println(cindex.getCiteindexs());
 		 System.out.println(cindex.getTokenindexs());
@@ -117,22 +117,22 @@ public class CiteIndex {
 			// 用字体的类型和颜色来比较,由于发现引文上标字体大小可能不一样，所以先不考虑
 			standardcolor = fontmap.get("fontcolor");
 			standardname = fontmap.get("fontname");
-//			System.out.println(standardcolor);
-//			System.out.println(standardname);
+			System.out.println(standardcolor);
+			System.out.println(standardname);
 		}
 		if (fontmap.containsKey("fontcolor_backup")) {
 			standardcolor_backup = fontmap.get("fontcolor_backup");
 			standardname_backup = fontmap.get("fontname_backup");
-//			System.out.println(standardcolor_backup);
-//			System.out.println(standardname_backup);
+			System.out.println(standardcolor_backup);
+			System.out.println(standardname_backup);
 		}
 		if (fontmap.containsKey("goto")) {
 			validgoto = true;
-			//System.out.println("这篇文章有goto属性");
+			System.out.println("这篇文章有goto属性");
 		}
-//		if((standardcolor!=null &&!standardcolor.equals("#000000"))||(standardcolor_backup!=null && !standardcolor_backup.equals("#000000"))) {
-//			System.out.println("这篇文章是彩色");
-//		}
+		if((standardcolor!=null &&!standardcolor.equals("#000000"))||(standardcolor_backup!=null && !standardcolor_backup.equals("#000000"))) {
+			System.out.println("这篇文章是彩色");
+		}
 		for (int i = 0; i < pageElements.size(); i++) {
 			List<Element> textElements = pageElements.get(i).elements("TEXT");
 			for (int j = 0; j < textElements.size(); j++) {

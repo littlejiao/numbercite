@@ -456,8 +456,8 @@ public class IndexFeature {
 			fontmap.put("fontname", citeNumName);
 			fontmap.put("fontsize", citeNumSize);
 		}
-		//System.out.println(names);
-		//System.out.println(names1);
+		System.out.println(names);
+		System.out.println(names1);
 		return fontmap;
 	}
 	/**

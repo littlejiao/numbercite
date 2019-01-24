@@ -22,21 +22,22 @@ public class Regex {
 	//单独一个TEXT+单独一个TOKEN标签的情况下，判断它的后一个TOKEN标签是否为数字或大写字母开头，如果是，证明找到的这个数字不是引文上标
 	public static final String RegEx_NumCap = "^[A-Z0-9]$|^[A-Z][a-z]$";
 	
-	//判断一个TOKEN的内容是不是数字、一个大小写字母、以及常用的一些平方立方单位 
-	//目前认为大写字母后面跟上标数字是正确的; 防止上标前面是年份，去掉四位数的情况
-	//上标前面不能是人名
-	public static final String RegEx_Sb = "\\(?[A-Z]\\/[A-Za-z]$|[^\\w\\s,.:;)]$|^to$|^sin$|^cos$|^between$|^and$|^[^0-9a-zA-Z]?(cm|nm|dm)$|^\\(?[a-z]\\)?$"
-			+"|\\(?\\d+\\.\\d+\\)?$|^\\(?\\d{1,3}\\)?$|^\\(?3-9\\d{3}\\)?$|^\\(?\\d{5,}\\)?$";
+	//上标前面
+	//1.不能是(G/c); 2.不能是除数字、字母、空格、,.:;)这几个字符之外的单独字符; 3.不能是to、sin、cos、between、and这样的字符; 
+	//4.不能是cm、nm、dm这样的单位字符；  5.不能是单独的一个小写字母；  6.不能是单独的数字（除年份以外的）
+	public static final String RegEx_Sb = "\\(?[A-Z]\\/[A-Za-z]\\)?$|\\(?[^\\w\\s,.:;)]\\)?$|^to$|^sin$|^cos$|^between$|^and$|"
+			+ "^[^0-9a-zA-Z]?(cm|nm|dm)$|^\\(?[a-z]\\)?$|^[A-Z][a-z]+$|"
+			+"\\(?\\d+\\.\\d+\\)?$|^\\(?\\d{1,3}\\)?$|^\\(?3-9\\d{3}\\)?$|^\\(?\\d{5,}\\)?$";
 	
 	//判断一个字符串中是否有句尾型的“.”   Z.(有待商议)  Zhang.xxxxx   al.xxxx    Fig. xxxxxx    GLCs.（句末结尾）
-	public static final String RegEx_Dot_Front = "(^[A-Z][a-z]+|^al|^no|^num|^Num|etc|Ref|ref|Fig|fig|Tab|tab|e.g|[A-Z]\\.[A-Z])\\.$";
+	public static final String RegEx_Dot_Front = "(^[A-Z][a-z]+|^al|^no|^num|^Num|etc|Ref|ref|Fig|fig|Tab|tab|e.g|[A-Z]\\.[A-Z]|i.e)\\.";
 	public static final String RegEx_Dot_Behind = "^\\.[0-9]";
 	
 	
 	public static void main(String[] args) {
 		
-		String s = "19,(29)";
-		Pattern p = Pattern.compile(RegEx);
+		String s = "Package";
+		Pattern p = Pattern.compile(RegEx_Sb);
 		//Pattern p = Pattern.compile("");
 		Matcher m = p.matcher(s);
 		if(m.find()) {

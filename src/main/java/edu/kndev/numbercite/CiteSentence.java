@@ -30,7 +30,7 @@ public class CiteSentence {
 	
 	public static void main(String[] args) {
 		CiteSentence s = new CiteSentence();
-		CiteIndex cindex = new CiteIndex(new File("xmls/b.xml"));
+		CiteIndex cindex = new CiteIndex(new File("D:\\pdf\\xmls\\t.xml"));
 		CiteUtil cutil = new CiteUtil();
 		List<String> ss = s.getAllSentence(cindex);
 		List<String> indexstrs = cindex.getIndexstrs();
